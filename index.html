@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GradeSigma is a free universal relative grading calculator, semester GPA calculator, and cumulative CGPA analytics suite engineered for universities including VIT, SRM, BITS, LPU, and IITs.">
+  <meta name="keywords" content="GradeSigma, relative grade calculator, GPA calculator, CGPA calculator, VIT relative grading, Gaussian bell curve grading, Z-score calculator, SRM GPA calculator, BITS relative grading, LPU grade calculator, semester GPA, college grade predictor">
+  <meta name="author" content="Rajat Tiwari">
+  <meta name="robots" content="index, follow">
+  <title>GradeSigma • Universal Relative Grading, GPA & CGPA Suite</title>
+
+  <!-- Open Graph / Facebook / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GradeSigma • Universal Relative Grading, GPA & CGPA Suite">
+  <meta property="og:description" content="Calculate relative grades with Gaussian bell curves, semester GPA, and cumulative CGPA for universities like VIT, SRM, BITS, LPU & more.">
+  <meta property="og:site_name" content="GradeSigma">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GradeSigma • Relative Grading & GPA Suite">
+  <meta name="twitter:description" content="Universal Gaussian relative grading, semester GPA calculator, and cumulative CGPA planner.">
+
+  <!-- Schema.org JSON-LD for Google Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "GradeSigma",
+    "description": "Universal Relative Grading, Semester GPA, and Cumulative CGPA Analytics Platform.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All",
+    "author": {
+      "@type": "Person",
+      "name": "Rajat Tiwari",
+      "url": "https://github.com/tiwarirajat-1501"
+    }
+  }
+  </script>
+
+  <!-- Google Fonts (Outfit & Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       PAGE 1: CINEMATIC SPLASH & GATEWAY HUB (Choose Workflow)
+       ======================================================================== -->
+  <section class="splash-screen" id="view-splash">
+    <canvas id="splash-canvas" class="splash-canvas"></canvas>
+    
+    <div class="splash-card">
+      <div class="splash-badge">
+        <i data-lucide="shield-check" class="badge-icon"></i>
+        <span>Universal Academic Suite &bull; V3.0</span>
+      </div>
+
+      <div class="splash-brand-icon">
+        <i data-lucide="calculator"></i>
+      </div>
+
+      <h1 class="splash-title">
+        Grade<span class="gradient-text">Sigma</span>
+      </h1>
+      <p class="splash-tagline">
+        Universal Relative Grading, Semester GPA & Cumulative CGPA Analytics
+      </p>
+
+      <div class="splash-colleges-badge">
+        <i data-lucide="building-2"></i>
+        <span>Engineered for universities with relative grading systems (<strong>VIT, SRM, BITS, LPU, IITs & more</strong>)</span>
+      </div>
+
+      <!-- Action Gateway Grid: Choose Workflow -->
+      <div class="gateway-grid">
+        <!-- Gateway Card 1: Classroom Relative Grading -->
+        <div class="gateway-card" id="gateway-relative-btn">
+          <div class="gateway-icon icon-blue">
+            <i data-lucide="trending-up"></i>
+          </div>
+          <div class="gateway-content">
+            <h3 class="gateway-title">Classroom Relative Grading</h3>
+            <p class="gateway-desc">Gaussian Bell Curve, multi-class sections, Z-scores & outlier identification for faculty.</p>
+          </div>
+          <span class="gateway-action-text">Launch Portal <i data-lucide="arrow-right"></i></span>
+        </div>
+
+        <!-- Gateway Card 2: Semester GPA Calculator -->
+        <div class="gateway-card" id="gateway-gpa-btn">
+          <div class="gateway-icon icon-emerald">
+            <i data-lucide="calculator"></i>
+          </div>
+          <div class="gateway-content">
+            <h3 class="gateway-title">Semester GPA Calculator</h3>
+            <p class="gateway-desc">Calculate semester GPA based on course letter grades (S, A, B, C, D, E, F) and credit weightages.</p>
+          </div>
+          <span class="gateway-action-text">Calculate GPA <i data-lucide="arrow-right"></i></span>
+        </div>
+
+        <!-- Gateway Card 3: Cumulative CGPA Planner -->
+        <div class="gateway-card" id="gateway-cgpa-btn">
+          <div class="gateway-icon icon-purple">
+            <i data-lucide="line-chart"></i>
+          </div>
+          <div class="gateway-content">
+            <h3 class="gateway-title">Cumulative CGPA Planner</h3>
+            <p class="gateway-desc">Multi-semester CGPA progression, target forecaster, and previous credit integration.</p>
+          </div>
+          <span class="gateway-action-text">Plan CGPA <i data-lucide="arrow-right"></i></span>
+        </div>
+
+        <!-- Gateway Card 4: What-If Target Predictor -->
+        <div class="gateway-card" id="gateway-simulator-btn">
+          <div class="gateway-icon icon-amber">
+            <i data-lucide="crosshair"></i>
+          </div>
+          <div class="gateway-content">
+            <h3 class="gateway-title">"What-If" Grade Predictor</h3>
+            <p class="gateway-desc">Calculate required final exam marks needed to achieve desired letter grades.</p>
+          </div>
+          <span class="gateway-action-text">Simulate Marks <i data-lucide="arrow-right"></i></span>
+        </div>
+      </div>
+
+      <div class="splash-footer">
+        <p><strong>GradeSigma</strong> &bull; Developed by <strong>Rajat Tiwari</strong></p>
+        <p class="footer-links splash-links">
+          <a href="https://github.com/tiwarirajat-1501" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="github"></i> GitHub Profile
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================================================
+       MAIN APPLICATION SHELL (Header + Dynamic Views)
+       ======================================================================== -->
+  <div class="app-shell hidden" id="app-shell">
+    
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="header-container">
+        <!-- Brand Group -->
+        <div class="brand-group" id="header-brand" style="cursor: pointer;" title="Back to Home Screen">
+          <div class="brand-icon">
+            <i data-lucide="calculator"></i>
+          </div>
+          <div>
+            <h1 class="brand-title">Grade<span class="gradient-text">Sigma</span></h1>
+            <p class="brand-subtitle">Universal Grading & Analytics</p>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs" aria-label="Main Navigation">
+          <button class="nav-tab active" data-view="dashboard" id="nav-tab-dashboard">
+            <i data-lucide="trending-up"></i> <span>Relative Grading</span>
+          </button>
+          <button class="nav-tab" data-view="gpa" id="nav-tab-gpa">
+            <i data-lucide="calculator"></i> <span>GPA Calculator</span>
+          </button>
+          <button class="nav-tab" data-view="cgpa" id="nav-tab-cgpa">
+            <i data-lucide="line-chart"></i> <span>CGPA Planner</span>
+          </button>
+          <button class="nav-tab" data-view="classes" id="nav-tab-classes">
+            <i data-lucide="school"></i> <span>Classrooms</span>
+            <span class="nav-count-badge" id="nav-class-count">3</span>
+          </button>
+          <button class="nav-tab" data-view="comparison" id="nav-tab-comparison">
+            <i data-lucide="git-compare"></i> <span>Compare Sections</span>
+          </button>
+          <button class="nav-tab" data-view="simulator" id="nav-tab-simulator">
+            <i data-lucide="crosshair"></i> <span>Simulator</span>
+          </button>
+        </nav>
+
+        <!-- Header Actions & Class Selector -->
+        <div class="header-actions">
+          <button class="btn btn-secondary btn-sm header-home-btn" id="header-home-btn" title="Back to Home Screen Gateway">
+            <i data-lucide="home"></i> <span>Home Screen</span>
+          </button>
+
+          <!-- Active Class Dropdown Switcher (Visible in relative grading mode) -->
+          <div class="class-dropdown-wrapper" id="header-class-selector-wrapper">
+            <label for="header-class-select" class="sr-only">Active Classroom</label>
+            <select id="header-class-select" class="form-control header-select" title="Switch Active Class">
+              <!-- Dynamically populated classes -->
+            </select>
+          </div>
+
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+            <i data-lucide="sun" class="sun-icon"></i>
+            <i data-lucide="moon" class="moon-icon"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ======================================================================
+         VIEW 1: CLASSROOM RELATIVE GRADING DASHBOARD
+         ====================================================================== -->
+    <main class="main-content view-container" id="view-dashboard">
+      <!-- Active Class Header Banner -->
+      <section class="class-banner card">
+        <div class="banner-info">
+          <div class="banner-title-group">
+            <span class="badge badge-accent" id="dash-class-code">CSE1021</span>
+            <h2 class="banner-name" id="dash-class-name">Problem Solving & Programming - Slot A1</h2>
+          </div>
+          <p class="banner-meta" id="dash-class-meta">Academic Section &bull; 30 Students Enrolled &bull; Gaussian Relative Model</p>
+        </div>
+        <div class="banner-actions">
+          <button class="btn btn-secondary btn-sm" id="btn-export-class-csv" title="Export this class records to CSV">
+            <i data-lucide="file-spreadsheet"></i> Export CSV
+          </button>
+          <button class="btn btn-secondary btn-sm" id="btn-print-class-sheet" title="Print official Grade Assessment Sheet">
+            <i data-lucide="printer"></i> Print Sheet
+          </button>
+        </div>
+      </section>
+
+      <!-- KPI Statistics Grid -->
+      <section class="stats-grid" id="stats-banner">
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Total Students</span>
+            <i data-lucide="graduation-cap" class="stat-icon icon-blue"></i>
+          </div>
+          <div class="stat-value" id="stat-total-students">0</div>
+          <div class="stat-subtext">Active enrolled scores</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Class Mean (&mu;)</span>
+            <i data-lucide="target" class="stat-icon icon-purple"></i>
+          </div>
+          <div class="stat-value" id="stat-mean">0.00</div>
+          <div class="stat-subtext">Baseline average score</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Std Deviation (&sigma;)</span>
+            <i data-lucide="activity" class="stat-icon icon-amber"></i>
+          </div>
+          <div class="stat-value" id="stat-std-dev">0.00</div>
+          <div class="stat-subtext">Score spread & variance</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Median & Range</span>
+            <i data-lucide="sliders" class="stat-icon icon-emerald"></i>
+          </div>
+          <div class="stat-value" id="stat-median">0.00</div>
+          <div class="stat-subtext" id="stat-range">Min: 0.0 | Max: 0.0</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-header">
+            <span class="stat-label">Pass Rate</span>
+            <i data-lucide="check-circle" class="stat-icon icon-teal"></i>
+          </div>
+          <div class="stat-value" id="stat-pass-rate">100%</div>
+          <div class="stat-subtext" id="stat-outliers-sub">0 High Achievers | 0 Remedial</div>
+        </div>
+      </section>
+
+      <!-- 2-Column Dashboard Layout -->
+      <div class="dashboard-layout">
+        <!-- Left Column: Controls & Input -->
+        <section class="dashboard-panel panel-left">
+          <!-- Grading Scheme Selector -->
+          <div class="card scheme-card">
+            <div class="card-header">
+              <h3 class="card-title"><i data-lucide="award"></i> Grading Scheme</h3>
+              <span class="badge badge-info" id="active-scheme-badge">Gaussian Relative</span>
+            </div>
+
+            <div class="scheme-tabs">
+              <button class="scheme-tab active" data-scheme="gaussian" id="tab-gaussian">
+                Gaussian (Z-Score)
+              </button>
+              <button class="scheme-tab" data-scheme="vit" id="tab-vit">
+                VIT Model
+              </button>
+              <button class="scheme-tab" data-scheme="percentile" id="tab-percentile">
+                Percentile Rank
+              </button>
+              <button class="scheme-tab" data-scheme="absolute" id="tab-absolute">
+                Absolute Marks
+              </button>
+            </div>
+
+            <div class="scheme-details" id="scheme-details-container">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Add Student & Bulk Upload Card -->
+          <div class="card input-card">
+            <div class="card-header">
+              <h3 class="card-title"><i data-lucide="user-plus"></i> Student & Score Input</h3>
+              <div class="header-btn-group">
+                <button class="btn btn-secondary btn-xs" id="open-paste-modal-btn">
+                  <i data-lucide="clipboard"></i> Paste Data
+                </button>
+                <button class="btn btn-danger btn-xs" id="clear-all-btn">
+                  <i data-lucide="trash-2"></i> Clear Roster
+                </button>
+              </div>
+            </div>
+
+            <!-- Single Student Form -->
+            <form id="add-student-form" class="inline-add-form">
+              <div class="input-grid">
+                <div class="form-group">
+                  <label for="input-roll">Roll No / ID</label>
+                  <input type="text" id="input-roll" placeholder="e.g. CS101 / Roll No" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="input-name">Student Name</label>
+                  <input type="text" id="input-name" placeholder="e.g. Aarav Sharma" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="input-score">Score (0-100)</label>
+                  <input type="number" id="input-score" step="0.1" min="0" max="100" placeholder="e.g. 88.5" class="form-control" required>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block" id="btn-add-student">
+                <i data-lucide="plus"></i> Add Student to Section
+              </button>
+            </form>
+
+            <!-- CSV Drop Zone -->
+            <div class="drop-zone" id="csv-drop-zone">
+              <i data-lucide="upload-cloud" class="drop-icon"></i>
+              <p class="drop-text">Drag & drop <strong>.CSV</strong> file or <label for="csv-file-input" class="file-label">browse</label></p>
+              <span class="drop-hint">Columns: Roll No, Name, Score</span>
+              <input type="file" id="csv-file-input" accept=".csv, .txt" class="file-hidden-input">
+            </div>
+          </div>
+        </section>
+
+        <!-- Right Column: Visualizations & Charts -->
+        <section class="dashboard-panel panel-right">
+          <!-- Bell Curve Chart -->
+          <div class="card chart-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title"><i data-lucide="trending-up"></i> Gaussian Bell Curve & Distribution</h3>
+                <p class="card-subtitle">Normal Distribution PDF with &plusmn;1&sigma;, &plusmn;2&sigma;, &plusmn;3&sigma; intervals & student plots</p>
+              </div>
+              <div class="chart-legend-pills">
+                <span class="legend-pill pill-mean"><span class="dot"></span> Mean (&mu;)</span>
+                <span class="legend-pill pill-std"><span class="dot"></span> Std Dev (&sigma;)</span>
+                <span class="legend-pill pill-student"><span class="dot"></span> Students</span>
+              </div>
+            </div>
+            <div class="chart-wrapper">
+              <canvas id="bell-curve-chart"></canvas>
+            </div>
+          </div>
+
+          <!-- Grade Distribution Chart -->
+          <div class="card chart-card">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title"><i data-lucide="bar-chart-2"></i> Grade Frequency Distribution</h3>
+                <p class="card-subtitle">Student count breakdown across assigned letter grade tiers</p>
+              </div>
+            </div>
+            <div class="chart-wrapper-secondary">
+              <canvas id="grade-dist-chart"></canvas>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Bottom: Grade Roster Table -->
+      <section class="card table-card">
+        <div class="table-card-header">
+          <div class="table-title-group">
+            <h3 class="card-title"><i data-lucide="table"></i> Section Grade Roster</h3>
+            <span class="record-counter" id="table-record-count">Showing 0 students</span>
+          </div>
+
+          <div class="table-actions">
+            <!-- Search -->
+            <div class="search-box">
+              <i data-lucide="search" class="search-icon"></i>
+              <input type="text" id="roster-search" placeholder="Search by name, roll no..." class="form-control table-search-input">
+            </div>
+
+            <!-- Grade Filter -->
+            <select id="grade-filter" class="form-control filter-select">
+              <option value="ALL">All Grades</option>
+              <option value="S">Grade S</option>
+              <option value="A">Grade A</option>
+              <option value="B">Grade B</option>
+              <option value="C">Grade C</option>
+              <option value="D">Grade D</option>
+              <option value="E">Grade E</option>
+              <option value="F">Grade F</option>
+            </select>
+
+            <!-- Export Buttons -->
+            <div class="export-btn-group">
+              <button class="btn btn-secondary btn-sm" id="export-csv-btn" title="Export roster to CSV">
+                <i data-lucide="file-spreadsheet"></i> CSV
+              </button>
+              <button class="btn btn-secondary btn-sm" id="export-json-btn" title="Export roster to JSON">
+                <i data-lucide="file-code"></i> JSON
+              </button>
+              <button class="btn btn-primary btn-sm" id="print-sheet-btn" title="Print Grade Sheet">
+                <i data-lucide="printer"></i> Print
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="roster-table" id="roster-table">
+            <thead>
+              <tr>
+                <th data-sort="id" class="sortable">ID / Roll No <i data-lucide="chevrons-up-down" class="sort-icon"></i></th>
+                <th data-sort="name" class="sortable">Student Name <i data-lucide="chevrons-up-down" class="sort-icon"></i></th>
+                <th data-sort="score" class="sortable">Raw Score <i data-lucide="chevrons-up-down" class="sort-icon"></i></th>
+                <th data-sort="z_score" class="sortable">Z-Score (Deviation) <i data-lucide="chevrons-up-down" class="sort-icon"></i></th>
+                <th data-sort="grade" class="sortable">Grade <i data-lucide="chevrons-up-down" class="sort-icon"></i></th>
+                <th data-sort="percentile" class="sortable">Percentile <i data-lucide="chevrons-up-down" class="sort-icon"></i></th>
+                <th>Status & Outlier Tag</th>
+                <th class="text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="roster-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="empty-state hidden" id="table-empty-state">
+          <i data-lucide="inbox" class="empty-icon"></i>
+          <h3>No students in this section yet</h3>
+          <p>Add students manually, load a preset demo, or upload a CSV file.</p>
+          <button class="btn btn-primary btn-sm" id="empty-load-demo-btn">
+            <i data-lucide="sparkles"></i> Load 30 Students Demo
+          </button>
+        </div>
+      </section>
+    </main>
+
+
+    <!-- ======================================================================
+         VIEW 2: SEMESTER GPA CALCULATOR (Based on Course Grades & Credits)
+         ====================================================================== -->
+    <main class="main-content view-container hidden" id="view-gpa">
+      <section class="card gpa-header-card">
+        <div class="gpa-banner-flex">
+          <div>
+            <h2 class="view-heading"><i data-lucide="calculator"></i> Semester GPA Calculator</h2>
+            <p class="card-subtitle">Calculate your semester Grade Point Average (GPA) based on course credits and letter grades (S, A, B, C, D, E, F)</p>
+          </div>
+          <div class="header-btn-group">
+            <button class="btn btn-secondary btn-sm" id="btn-gpa-preset-20" title="Load standard 5-course (20 credits) semester">
+              <i data-lucide="sparkles"></i> 20 Credits Preset
+            </button>
+            <button class="btn btn-secondary btn-sm" id="btn-gpa-preset-24" title="Load 6-course (24 credits) semester">
+              <i data-lucide="layers"></i> 24 Credits Preset
+            </button>
+            <button class="btn btn-danger btn-sm" id="btn-gpa-clear">
+              <i data-lucide="trash-2"></i> Reset
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <div class="gpa-layout-grid">
+        <!-- Left: Dynamic Course Grade & Credit Table -->
+        <div class="card gpa-table-card">
+          <div class="card-header">
+            <h3 class="card-title"><i data-lucide="book-open"></i> Course Enrollment & Grade Entry</h3>
+            <button class="btn btn-primary btn-sm" id="btn-add-gpa-course">
+              <i data-lucide="plus"></i> Add Course
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="roster-table gpa-table" id="gpa-course-table">
+              <thead>
+                <tr>
+                  <th style="width: 40%;">Course Name / Code</th>
+                  <th style="width: 25%;">Letter Grade</th>
+                  <th style="width: 25%;">Credits</th>
+                  <th class="text-right" style="width: 10%;">Action</th>
+                </tr>
+              </thead>
+              <tbody id="gpa-course-tbody">
+                <!-- Dynamically populated course rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="gpa-table-footer">
+            <button class="btn btn-secondary btn-sm" id="btn-add-course-bottom">
+              <i data-lucide="plus-circle"></i> Add Another Course
+            </button>
+            <span class="gpa-hint-text">Grades: S=10, A=9, B=8, C=7, D=6, E=5, F=0</span>
+          </div>
+        </div>
+
+        <!-- Right: Real-Time GPA Score Display & Stats -->
+        <div class="gpa-sidebar">
+          <!-- GPA Hero Card -->
+          <div class="card gpa-result-card">
+            <div class="gpa-score-dial">
+              <span class="gpa-score-large" id="gpa-display-value">0.00</span>
+              <span class="gpa-score-label">Semester GPA (out of 10.0)</span>
+            </div>
+
+            <div class="gpa-metrics-grid">
+              <div class="gpa-metric-box">
+                <label>Total Credits</label>
+                <span id="gpa-total-credits">0.0</span>
+              </div>
+              <div class="gpa-metric-box">
+                <label>Total Quality Points</label>
+                <span id="gpa-total-points">0.0</span>
+              </div>
+              <div class="gpa-metric-box">
+                <label>Academic Standing</label>
+                <span id="gpa-standing-badge" class="badge badge-accent">Good Standing</span>
+              </div>
+              <div class="gpa-metric-box">
+                <label>Courses Count</label>
+                <span id="gpa-courses-count">0</span>
+              </div>
+            </div>
+
+            <div class="gpa-formula-box">
+              <p class="math-eq">&Sigma; (Grade Point &times; Credits) / &Sigma; Credits</p>
+              <p class="math-sub" id="gpa-math-sub">GPA = 0.0 / 0.0 = 0.00</p>
+            </div>
+          </div>
+
+          <!-- Quick Transfer to Cumulative CGPA -->
+          <div class="card gpa-transfer-card">
+            <h4 class="card-title" style="font-size: 0.95rem;"><i data-lucide="forward"></i> Next Step</h4>
+            <p class="simulator-desc">Transfer this semester GPA directly into the Cumulative CGPA Planner:</p>
+            <button class="btn btn-primary btn-block btn-sm" id="btn-transfer-to-cgpa">
+              <i data-lucide="line-chart"></i> Send to CGPA Planner
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- ======================================================================
+         VIEW 3: CUMULATIVE CGPA PLANNER & MULTI-SEMESTER FORECASTER
+         ====================================================================== -->
+    <main class="main-content view-container hidden" id="view-cgpa">
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="view-heading"><i data-lucide="line-chart"></i> Cumulative CGPA Calculator & Planner</h2>
+            <p class="card-subtitle">Calculate overall Cumulative GPA across semesters, forecast target CGPA requirements, and track degree progression</p>
+          </div>
+        </div>
+
+        <div class="cgpa-layout-grid">
+          <!-- Left: Quick Combined CGPA Calculator -->
+          <div class="card cgpa-panel-card">
+            <h3 class="card-title"><i data-lucide="zap"></i> Quick Combined CGPA</h3>
+            <p class="simulator-desc">Combine your previous cumulative academic record with your new semester results:</p>
+
+            <div class="form-group">
+              <label for="cgpa-prev-gpa">Previous Cumulative CGPA (out of 10)</label>
+              <input type="number" id="cgpa-prev-gpa" class="form-control" placeholder="e.g. 8.54" step="0.01" min="0" max="10" value="8.50">
+            </div>
+
+            <div class="form-group">
+              <label for="cgpa-prev-credits">Total Credits Completed (Prior to Current Sem)</label>
+              <input type="number" id="cgpa-prev-credits" class="form-control" placeholder="e.g. 40" step="0.5" min="1" value="40">
+            </div>
+
+            <div class="form-group">
+              <label for="cgpa-curr-gpa">Current Semester GPA</label>
+              <input type="number" id="cgpa-curr-gpa" class="form-control" placeholder="e.g. 9.20" step="0.01" min="0" max="10" value="9.15">
+            </div>
+
+            <div class="form-group">
+              <label for="cgpa-curr-credits">Current Semester Credits</label>
+              <input type="number" id="cgpa-curr-credits" class="form-control" placeholder="e.g. 21" step="0.5" min="1" value="20">
+            </div>
+
+            <div class="sim-result-box" style="margin-top: 1rem;">
+              <div class="sim-score-needed">
+                <span class="sim-score-number" id="cgpa-quick-result">8.72</span>
+                <span class="sim-score-unit">New Overall CGPA</span>
+              </div>
+              <div class="sim-formula" id="cgpa-quick-formula">
+                CGPA = ( (8.50 &times; 40) + (9.15 &times; 20) ) / 60
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Target CGPA Forecaster -->
+          <div class="card cgpa-panel-card">
+            <h3 class="card-title"><i data-lucide="target"></i> Target CGPA Forecaster</h3>
+            <p class="simulator-desc">Calculate what average GPA you need in your remaining semesters to hit your dream graduation CGPA:</p>
+
+            <div class="form-group">
+              <label for="cgpa-target-desired">Target Graduation CGPA</label>
+              <select id="cgpa-target-desired" class="form-control">
+                <option value="9.5">9.50+ (Summa Cum Laude / Top Tier)</option>
+                <option value="9.0" selected>9.00+ (Distinction / Gold Medalist)</option>
+                <option value="8.5">8.50+ (High First Class / Dean's List)</option>
+                <option value="8.0">8.00+ (First Class with Distinction)</option>
+                <option value="7.5">7.50+ (First Class Benchmark)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="cgpa-target-total-deg-credits">Total Degree Credits (e.g. 160 for B.Tech)</label>
+              <input type="number" id="cgpa-target-total-deg-credits" class="form-control" value="160" step="1">
+            </div>
+
+            <div class="form-group">
+              <label for="cgpa-target-credits-left">Remaining Credits Left</label>
+              <input type="number" id="cgpa-target-credits-left" class="form-control" value="100" step="1">
+            </div>
+
+            <div class="sim-result-box" style="margin-top: 1rem;">
+              <div class="sim-score-needed">
+                <span class="sim-score-number" id="cgpa-target-required-gpa">9.30</span>
+                <span class="sim-score-unit">Required Average GPA</span>
+              </div>
+              <div class="sim-formula" id="cgpa-target-status-text">
+                Target is achievable with consistent distinction!
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Multi-Semester Transcript Progression Chart -->
+        <div class="card chart-card" style="margin-top: 1.5rem;">
+          <div class="card-header">
+            <h3 class="card-title"><i data-lucide="trending-up"></i> Multi-Semester CGPA Trend Tracker</h3>
+          </div>
+          <div class="chart-wrapper" style="height: 280px;">
+            <canvas id="cgpa-trend-chart"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <!-- ======================================================================
+         VIEW 4: CLASSROOMS HUB / SECTION MANAGER
+         ====================================================================== -->
+    <main class="main-content view-container hidden" id="view-classes">
+      <section class="classrooms-header card">
+        <div>
+          <h2 class="view-heading"><i data-lucide="school"></i> Faculty Classrooms & Sections</h2>
+          <p class="card-subtitle">Manage, configure, and switch between your academic sections and course cohorts</p>
+        </div>
+        <button class="btn btn-primary" id="btn-create-class-modal">
+          <i data-lucide="plus-circle"></i> Create New Class
+        </button>
+      </section>
+
+      <!-- Classroom Card Grid -->
+      <section class="classes-grid" id="classes-card-grid">
+        <!-- Dynamically rendered class cards -->
+      </section>
+    </main>
+
+
+    <!-- ======================================================================
+         VIEW 5: CROSS-SECTION COMPARATIVE ANALYTICS
+         ====================================================================== -->
+    <main class="main-content view-container hidden" id="view-comparison">
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <h2 class="view-heading"><i data-lucide="git-compare"></i> Cross-Section Performance Comparison</h2>
+            <p class="card-subtitle">Compare relative grading metrics, class averages, standard deviation, and pass rates across all your active sections</p>
+          </div>
+        </div>
+
+        <!-- Comparative Metrics Table -->
+        <div class="table-responsive" style="margin-bottom: 1.5rem;">
+          <table class="roster-table">
+            <thead>
+              <tr>
+                <th>Course & Section</th>
+                <th>Enrolled</th>
+                <th>Class Mean (&mu;)</th>
+                <th>Std Dev (&sigma;)</th>
+                <th>Median</th>
+                <th>Score Range</th>
+                <th>Pass Rate</th>
+                <th>Top Grade (S)</th>
+                <th>Remedial (< D)</th>
+              </tr>
+            </thead>
+            <tbody id="comparison-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Comparative Chart -->
+        <div class="card chart-card">
+          <div class="card-header">
+            <h3 class="card-title"><i data-lucide="bar-chart"></i> Multi-Section Grade Distribution Overlay</h3>
+          </div>
+          <div class="chart-wrapper" style="height: 320px;">
+            <canvas id="comparison-chart"></canvas>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <!-- ======================================================================
+         VIEW 6: DEDICATED "WHAT-IF" SIMULATOR & GPA FORECASTER
+         ====================================================================== -->
+    <main class="main-content view-container hidden" id="view-simulator">
+      <section class="card simulator-full-card">
+        <div class="card-header">
+          <div>
+            <h2 class="view-heading"><i data-lucide="crosshair"></i> "What-If" Relative Grade Target Simulator</h2>
+            <p class="card-subtitle">Estimate required exam scores to achieve specific letter grades based on expected or actual class statistics</p>
+          </div>
+        </div>
+
+        <div class="sim-full-grid">
+          <!-- Input Controls -->
+          <div class="sim-inputs-box">
+            <div class="form-group">
+              <label for="sim-full-class-select">Select Section Reference</label>
+              <select id="sim-full-class-select" class="form-control">
+                <!-- Dynamically populated classes -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="sim-full-mean">Estimated Class Average (&mu;)</label>
+              <input type="number" id="sim-full-mean" class="form-control" value="65.0" step="0.5">
+            </div>
+
+            <div class="form-group">
+              <label for="sim-full-std">Estimated Standard Deviation (&sigma;)</label>
+              <input type="number" id="sim-full-std" class="form-control" value="15.0" step="0.5" min="0.1">
+            </div>
+
+            <div class="form-group">
+              <label for="sim-full-target-grade">Desired Target Grade</label>
+              <select id="sim-full-target-grade" class="form-control">
+                <option value="S">Grade S (Exceptional / Z &ge; +2.0)</option>
+                <option value="A" selected>Grade A (Excellent / Z &ge; +1.0)</option>
+                <option value="B">Grade B (Very Good / Z &ge; +0.5)</option>
+                <option value="C">Grade C (Average / Z &ge; -0.5)</option>
+                <option value="D">Grade D (Pass / Z &ge; -1.3)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Mathematical Breakdown & Target Display -->
+          <div class="sim-display-box">
+            <div class="sim-hero-number">
+              <span class="sim-calc-number" id="sim-full-required-score">80.00</span>
+              <span class="sim-calc-unit">Marks Needed (out of 100)</span>
+            </div>
+
+            <div class="sim-math-card">
+              <h4><i data-lucide="sigma"></i> Mathematical Formula</h4>
+              <p class="math-eq">Required Score = &mu; + (Z<sub>threshold</sub> &times; &sigma;)</p>
+              <p class="math-sub" id="sim-full-math-sub">Score = 65.00 + (1.00 &times; 15.00) = 80.00 marks</p>
+            </div>
+
+            <div class="sim-grade-brackets-table" id="sim-full-brackets-container">
+              <!-- Populated by JavaScript -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-content">
+        <p><strong>GradeSigma</strong> &bull; Universal Relative Grading, GPA & CGPA Suite &bull; Engineered for universities with relative grading (VIT, SRM, BITS, LPU & more) &bull; Developed by <strong>Rajat Tiwari</strong></p>
+        <p class="footer-links">
+          <a href="#" id="footer-splash-link"><i data-lucide="home"></i> Home Screen</a>
+          <span>&bull;</span>
+          <a href="https://github.com/tiwarirajat-1501" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="github"></i> GitHub Profile
+          </a>
+        </p>
+      </div>
+    </footer>
+  </div>
+
+
+  <!-- ========================================================================
+       MODALS
+       ======================================================================== -->
+
+  <!-- Modal 1: Create New Classroom -->
+  <div class="modal-backdrop hidden" id="modal-create-class">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title"><i data-lucide="folder-plus"></i> Create New Classroom Section</h3>
+        <button class="modal-close-btn" id="close-create-class-modal">&times;</button>
+      </div>
+      <form id="form-create-class">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="new-class-code">Course Code</label>
+            <input type="text" id="new-class-code" class="form-control" placeholder="e.g. CSE1021 / MAT1011" required>
+          </div>
+          <div class="form-group">
+            <label for="new-class-name">Section / Slot Name</label>
+            <input type="text" id="new-class-name" class="form-control" placeholder="e.g. Slot A1 (Morning)" required>
+          </div>
+          <div class="form-group">
+            <label for="new-class-scheme">Default Grading Scheme</label>
+            <select id="new-class-scheme" class="form-control">
+              <option value="gaussian">Gaussian Relative (Z-Score Standard)</option>
+              <option value="vit">VIT Relative Curve Model</option>
+              <option value="percentile">Percentile Rank Model</option>
+              <option value="absolute">Absolute Score Cutoffs</option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="cancel-create-class-modal">Cancel</button>
+          <button type="submit" class="btn btn-primary"><i data-lucide="check"></i> Create Classroom</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal 2: Bulk Paste Student Data -->
+  <div class="modal-backdrop hidden" id="paste-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title"><i data-lucide="clipboard-paste"></i> Bulk Paste Student Data</h3>
+        <button class="modal-close-btn" id="close-paste-modal-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Paste lines in any format:
+          <br><code>RollNo, Student Name, Score</code> OR <code>Student Name, Score</code> OR just numbers <code>85.5, 92, 74</code>
+        </p>
+        <textarea id="bulk-paste-textarea" class="bulk-textarea" rows="10" placeholder="101, Aarav Sharma, 95.5&#10;102, Diya Patel, 88.0&#10;103, Sneha Nair, 76.5"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancel-paste-modal-btn">Cancel</button>
+        <button class="btn btn-primary" id="import-pasted-data-btn">Import Scores</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Individual Student Report Card Certificate -->
+  <div class="modal-backdrop hidden" id="report-modal">
+    <div class="modal-card report-card-modal">
+      <div class="modal-header">
+        <h3 class="modal-title"><i data-lucide="award"></i> Academic Performance Certificate</h3>
+        <button class="modal-close-btn" id="close-report-modal-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="report-modal-content">
+        <!-- Dynamically injected certificate -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="close-report-btn">Close</button>
+        <button class="btn btn-primary" id="print-single-report-btn"><i data-lucide="printer"></i> Print Certificate</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
