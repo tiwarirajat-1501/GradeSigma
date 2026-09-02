@@ -1966,30 +1966,34 @@ body.drawer-open .mobile-nav-drawer {
 }
 
 .drawer-nav-item {
+  appearance: none;
+  -webkit-appearance: none;
   display: flex;
   align-items: center;
   gap: 0.85rem;
   padding: 0.75rem 0.9rem;
   border-radius: var(--radius-md);
-  background: transparent;
-  border: 1px solid transparent;
-  color: var(--text-secondary);
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  color: var(--text-secondary) !important;
   text-align: left;
   cursor: pointer;
+  outline: none;
+  font-family: inherit;
   transition: all var(--transition-fast);
   width: 100%;
 }
 
 .drawer-nav-item:hover {
-  background: var(--bg-card-hover);
-  color: var(--text-primary);
-  border-color: var(--border-color);
+  background: var(--bg-card-hover) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-color) !important;
 }
 
 .drawer-nav-item.active {
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
-  border-color: rgba(59, 130, 246, 0.4);
-  color: #fff;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2)) !important;
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  color: #fff !important;
 }
 
 .drawer-item-icon {
