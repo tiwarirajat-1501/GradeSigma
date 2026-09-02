@@ -545,6 +545,14 @@ function switchView(viewName) {
   const targetTab = document.getElementById(`nav-tab-${viewName}`);
   if (targetTab) targetTab.classList.add('active');
 
+  const drawerTabs = document.querySelectorAll('.drawer-nav-item');
+  drawerTabs.forEach(t => t.classList.remove('active'));
+  const targetDrawerTab = document.getElementById(`drawer-tab-${viewName}`);
+  if (targetDrawerTab) targetDrawerTab.classList.add('active');
+
+  // Close mobile drawer on navigation
+  document.body.classList.remove('drawer-open');
+
   if (viewName === 'dashboard') {
     viewDashboard.classList.remove('hidden');
     renderDashboard();
@@ -1267,12 +1275,21 @@ function updateFullSimulator() {
 // ==============================================================================
 
 function populateClassDropdowns() {
-  const headerSelect = document.getElementById('header-class-select');
-  if (!headerSelect) return;
-  headerSelect.innerHTML = state.classes.map(c => `
+  const optionsHtml = state.classes.map(c => `
     <option value="${c.id}" ${c.id === state.activeClassId ? 'selected' : ''}>${escapeHtml(c.code)} - ${escapeHtml(c.name)}</option>
   `).join('');
-  document.getElementById('nav-class-count').textContent = state.classes.length;
+
+  const headerSelect = document.getElementById('header-class-select');
+  if (headerSelect) headerSelect.innerHTML = optionsHtml;
+
+  const mobileSelect = document.getElementById('mobile-class-select');
+  if (mobileSelect) mobileSelect.innerHTML = optionsHtml;
+
+  const countEl = document.getElementById('nav-class-count');
+  if (countEl) countEl.textContent = state.classes.length;
+
+  const mobileCountEl = document.getElementById('mobile-nav-class-count');
+  if (mobileCountEl) mobileCountEl.textContent = state.classes.length;
 }
 
 function setupEventListeners() {
@@ -1292,17 +1309,44 @@ function setupEventListeners() {
     switchView('splash');
   });
 
-  // Top Nav Tab Switching
+  // Top Nav Tab Switching (Desktop)
   document.querySelectorAll('.nav-tab').forEach(tab => {
     tab.addEventListener('click', () => switchView(tab.dataset.view));
   });
 
-  // Header Active Class Selector
-  document.getElementById('header-class-select').addEventListener('change', (e) => {
+  // Mobile Drawer Navigation Switching
+  document.querySelectorAll('.drawer-nav-item').forEach(tab => {
+    tab.addEventListener('click', () => switchView(tab.dataset.view));
+  });
+
+  // Mobile Drawer Open / Close Controls
+  document.getElementById('mobile-menu-btn')?.addEventListener('click', () => {
+    document.body.classList.add('drawer-open');
+  });
+  document.getElementById('drawer-close-btn')?.addEventListener('click', () => {
+    document.body.classList.remove('drawer-open');
+  });
+  document.getElementById('mobile-drawer-overlay')?.addEventListener('click', () => {
+    document.body.classList.remove('drawer-open');
+  });
+  document.getElementById('drawer-home-btn')?.addEventListener('click', () => {
+    switchView('splash');
+  });
+
+  // Header & Mobile Active Class Selector
+  const onClassChange = (e) => {
     state.activeClassId = e.target.value;
     saveClassesToStorage();
+    populateClassDropdowns();
     if (state.currentView === 'dashboard') renderDashboard();
     else if (state.currentView === 'classes') renderClassroomsHub();
+    else if (state.currentView === 'comparison') renderComparisonView();
+  };
+
+  document.getElementById('header-class-select')?.addEventListener('change', onClassChange);
+  document.getElementById('mobile-class-select')?.addEventListener('change', (e) => {
+    onClassChange(e);
+    document.body.classList.remove('drawer-open');
   });
 
   // Theme Toggle

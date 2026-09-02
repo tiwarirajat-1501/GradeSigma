@@ -204,9 +204,102 @@
             <i data-lucide="sun" class="sun-icon"></i>
             <i data-lucide="moon" class="moon-icon"></i>
           </button>
+
+          <!-- Mobile Hamburger Menu Button (Visible on Mobile/Tablet) -->
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open Navigation Menu" title="Open Menu">
+            <i data-lucide="menu"></i>
+          </button>
         </div>
       </div>
     </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div class="mobile-drawer-overlay" id="mobile-drawer-overlay"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <aside class="mobile-nav-drawer" id="mobile-nav-drawer" aria-label="Mobile Navigation">
+      <div class="drawer-header">
+        <div class="brand-group">
+          <div class="brand-icon">
+            <i data-lucide="calculator"></i>
+          </div>
+          <div>
+            <h2 class="brand-title">Grade<span class="gradient-text">Sigma</span></h2>
+            <p class="brand-subtitle">Navigation Menu</p>
+          </div>
+        </div>
+        <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close Menu">
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Classroom Switcher -->
+      <div class="drawer-section" id="drawer-class-section">
+        <label for="mobile-class-select" class="drawer-section-label"><i data-lucide="school"></i> Active Classroom</label>
+        <select id="mobile-class-select" class="form-control drawer-select">
+          <!-- Dynamically populated classes -->
+        </select>
+      </div>
+
+      <!-- Drawer Navigation Links -->
+      <nav class="drawer-nav">
+        <button class="drawer-nav-item active" data-view="dashboard" id="drawer-tab-dashboard">
+          <div class="drawer-item-icon"><i data-lucide="trending-up"></i></div>
+          <div class="drawer-item-info">
+            <span class="drawer-item-title">Relative Grading</span>
+            <span class="drawer-item-desc">Gaussian Bell Curve & Roster</span>
+          </div>
+        </button>
+        <button class="drawer-nav-item" data-view="gpa" id="drawer-tab-gpa">
+          <div class="drawer-item-icon"><i data-lucide="calculator"></i></div>
+          <div class="drawer-item-info">
+            <span class="drawer-item-title">Semester GPA Calculator</span>
+            <span class="drawer-item-desc">Course credits & letter points</span>
+          </div>
+        </button>
+        <button class="drawer-nav-item" data-view="cgpa" id="drawer-tab-cgpa">
+          <div class="drawer-item-icon"><i data-lucide="line-chart"></i></div>
+          <div class="drawer-item-info">
+            <span class="drawer-item-title">Cumulative CGPA Planner</span>
+            <span class="drawer-item-desc">Target forecaster & trend charts</span>
+          </div>
+        </button>
+        <button class="drawer-nav-item" data-view="classes" id="drawer-tab-classes">
+          <div class="drawer-item-icon"><i data-lucide="school"></i></div>
+          <div class="drawer-item-info">
+            <span class="drawer-item-title">Classrooms Manager</span>
+            <span class="drawer-item-desc">Manage sections & cohorts</span>
+          </div>
+          <span class="nav-count-badge" id="mobile-nav-class-count">3</span>
+        </button>
+        <button class="drawer-nav-item" data-view="comparison" id="drawer-tab-comparison">
+          <div class="drawer-item-icon"><i data-lucide="git-compare"></i></div>
+          <div class="drawer-item-info">
+            <span class="drawer-item-title">Compare Sections</span>
+            <span class="drawer-item-desc">Cross-section variance analytics</span>
+          </div>
+        </button>
+        <button class="drawer-nav-item" data-view="simulator" id="drawer-tab-simulator">
+          <div class="drawer-item-icon"><i data-lucide="crosshair"></i></div>
+          <div class="drawer-item-info">
+            <span class="drawer-item-title">"What-If" Grade Simulator</span>
+            <span class="drawer-item-desc">Target exam mark score predictor</span>
+          </div>
+        </button>
+      </nav>
+
+      <div class="drawer-footer">
+        <button class="btn btn-secondary btn-block" id="drawer-home-btn">
+          <i data-lucide="home"></i> <span>Home Screen Gateway</span>
+        </button>
+        <div class="drawer-author">
+          <p><strong>GradeSigma</strong> &bull; Developed by <strong>Rajat Tiwari</strong></p>
+          <a href="https://github.com/tiwarirajat-1501" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="github"></i> GitHub Profile
+          </a>
+        </div>
+      </div>
+    </aside>
 
 
     <!-- ======================================================================
