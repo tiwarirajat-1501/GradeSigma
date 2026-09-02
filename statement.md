@@ -55,5 +55,4 @@ This project provides a robust, fair, and automated computational platform to el
 
 ## 4. Author Information
 - **Name**: Rajat Tiwari
-- **Registration ID**: `25BAI10250`
-- **Course**: Problem Solving & Programming (CSE1021)
+- **GitHub**: [@tiwarirajat-1501](https://github.com/tiwarirajat-1501)

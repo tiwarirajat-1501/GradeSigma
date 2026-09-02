@@ -128,6 +128,4 @@ Grade_calculator.py/
 
 ## 👤 Author
 - **Name**: Rajat Tiwari
-- **Registration Number**: `25BAI10250`
 - **GitHub**: [@tiwarirajat-1501](https://github.com/tiwarirajat-1501)
-- **Course**: Semester 1 &bull; Problem Solving & Programming (CSE1021)
